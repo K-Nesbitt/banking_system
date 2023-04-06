@@ -1,0 +1,25 @@
+name: banking_system
+channels:
+  - defaults
+  - conda-forge
+  - plotly
+
+dependencies:
+  - python=3.10
+  - pip
+
+  # custom reqs
+  - ipython
+  - isort
+  - jupyter
+  - jupyterlab
+  - matplotlib
+  - numpy
+  - nbstripout
+  - pandas
+  - plotly
+  - pytest-cov
+  - pytest-mock
+  - pytest
+  - seaborn
+  - scikit-learn
