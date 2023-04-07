@@ -3,6 +3,43 @@ global accounts
 accounts={'1234567':{"name": "Keatra N",
                              "PIN": 1214, 
                              "type": "savings"}}
+def display_menu():
+    print("\n **NBO Menu**")
+    print("1. Check Balance ")
+    print("2. Withdrawal")
+    print("3. Deposit")
+    print("4. Create Account")
+    print("5. Delete Account")
+    print("6. Edit Account")
+    print("7. Exit\n")
+
+# def user_selection():
+#     try:
+#       user_choice = int(input("Enter a number between 1-5: "))
+#     except ValueError:
+#       print("\nSorry, Not a Valid Choice. Please try again! \n")
+#       user_selection()
+#     if user_choice == 1:  #Go to Store Inventory.
+#         #print('show inventory')
+#         display_inventory()
+#         user_selection()
+#     elif user_choice == 2:  #Initiate New Product Process.
+#         #print('add a new product \n')
+#         add_new_product()
+#         user_selection()
+#     elif user_choice == 3:  #Initiate Buying a New Product.
+#         #print("buying a product \n")
+#         order_product()
+#         user_selection()
+#     elif user_choice == 4:  #Initiate Removing a Product.
+#         #print('remove a product \n')
+#         remove_product()
+#         user_selection()
+#     elif user_choice == 5:  #Exit the program
+#         print("program ends.")
+#     else:
+#         print("\nSorry, Not a Valid Choice. Please try again! \n")
+#         user_selection()
 
 def main():
     print("Welcome to Nesbitt Bank Online (NBO)")
@@ -13,10 +50,13 @@ def main():
     if acct_num in accounts.keys():
         if pin == accounts[acct_num]["PIN"]:
             print("login successful")
+            display_menu()
         else:
             print("Login Unsuccessful. Incorrect PIN")
+            main()
     else:
         print("No account found")
+    
 
 if __name__ == '__main__':
     main()
