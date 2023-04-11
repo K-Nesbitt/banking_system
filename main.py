@@ -1,10 +1,12 @@
+import mysql.connector
+
 global accounts 
 
 accounts={'1234567':{"name": "Keatra N",
                              "PIN": 1214, 
                              "type": "savings"}}
 def display_menu():
-    print("\n **NBO Menu**")
+    print("\n **Menu**")
     print("1. Check Balance ")
     print("2. Withdrawal")
     print("3. Deposit")
@@ -43,6 +45,12 @@ def display_menu():
 
 def main():
     print("Welcome to Nesbitt Bank Online (NBO)")
+    
+    connection = mysql.connector.connect(host = 'localhost',
+                                        database = 'example',
+                                        user = 'root',
+                                        password = 'Y+kTRisJ')
+    
 
     acct_num = input("Enter your account number (7 digits): ")
     pin = int(input("Enter your PIN (4 digits): "))
@@ -57,6 +65,25 @@ def main():
     else:
         print("No account found")
     
+    cursor = connection.cursor()
+    addData = ("""
+    INSERT INTO student_table 
+    VALUES (002, 'john doe', 15, 0, 'LBJECHS')
+    """)
+
+    cursor.execute(addData)
+
+    connection.commit()
+
+    testQuery = ("SELECT * FROM student_table")
+
+    cursor.execute(testQuery)
+
+    for item in cursor:
+        print(item)
+
+    cursor.close()
+    connection.close()
 
 if __name__ == '__main__':
     main()
