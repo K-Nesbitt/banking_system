@@ -7,12 +7,13 @@ def account_exists(connection, acct_num):
     SELECT acct_num 
     FROM accounts 
     """)
+
     cursor.execute(Query)
-    for item in cursor:
-        if item[0] == acct_num:
-            cursor.close()
-            return True
-    
+    rows = cursor.fetchall()
+    for row in rows:
+            if row[0]==acct_num:
+                cursor.close()
+                return True
     cursor.close()
     return False
 
@@ -27,9 +28,9 @@ def acct_details(connection, acct_info):
         return None
 
     else:
-        print(f"Account details: {row}")
+        print(f"Account details: ")
         cursor.close()
-        return None
+        return row
 
 def login(connection):
     cursor = connection.cursor()
